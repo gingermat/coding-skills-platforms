@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"week-2/queue"
 	"week-2/stack"
 )
 
@@ -52,6 +53,26 @@ func display_stack_array() {
 	fmt.Printf("Check empty stack st.IsEmpty(): %v\n", st.IsEmpty())
 }
 
+func display_queue_linked_list() {
+	q := queue.NewQueueOnLinkedList()
+	fmt.Printf("Queue q=%v\n", q)
+
+	fmt.Printf("Check empty queue q.IsEmpty(): %v\n", q.IsEmpty())
+
+	q.Enqueue("a")
+	fmt.Printf("Add value into queue q.Enqueue(\"a\"): %v\n", q)
+
+	fmt.Printf("Check empty queue q.IsEmpty(): %v\n", q.IsEmpty())
+
+	q.Enqueue(2)
+	fmt.Printf("Add value into queue q.Enqueue(2): %v\n", q)
+
+	fmt.Printf("Returned element from queue q.Dequeue(): %v, q: %v\n", q.Dequeue(), q)
+	fmt.Printf("Returned element from queue q.Dequeue(): %v, q: %v\n", q.Dequeue(), q)
+
+	fmt.Printf("Check empty queue q.IsEmpty(): %v\n", q.IsEmpty())
+}
+
 func main() {
 	fmt.Printf("Display Stack(linked list)\n\n")
 
@@ -62,4 +83,10 @@ func main() {
 
 	display_stack_array()
 	fmt.Println()
+
+	fmt.Printf("Display Queue(linked list)\n\n")
+
+	display_queue_linked_list()
+	fmt.Println()
+
 }
