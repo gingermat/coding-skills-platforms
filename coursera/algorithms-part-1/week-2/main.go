@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"week-2/iterator"
 	"week-2/queue"
 	"week-2/stack"
 )
@@ -73,6 +74,18 @@ func display_queue_linked_list() {
 	fmt.Printf("Check empty queue q.IsEmpty(): %v\n", q.IsEmpty())
 }
 
+func display_iterator_linked_list() {
+	ll := iterator.NewLinkedList([]interface{}{1, 2, 4, 8, 16})
+	fmt.Printf("LinkedList ll=%v\n", ll)
+
+	it := iterator.NewLinkedListIterator(ll)
+	fmt.Printf("LinkedList Iterator it=%v\n", it)
+
+	for it.HasNext() {
+		fmt.Printf("Get item from LinkedList Iterator it.Next()=%v\n", it.Next())
+	}
+}
+
 func main() {
 	fmt.Printf("Display Stack(linked list)\n\n")
 
@@ -89,4 +102,8 @@ func main() {
 	display_queue_linked_list()
 	fmt.Println()
 
+	fmt.Printf("Display Iterator(linked list)\n\n")
+
+	display_iterator_linked_list()
+	fmt.Println()
 }
