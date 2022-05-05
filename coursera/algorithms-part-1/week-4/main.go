@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"week-4/heap"
 	"week-4/queue"
+	"week-4/symbol_table"
 )
 
 func displayUnorderedMaxPQ() {
@@ -76,7 +77,88 @@ func displayHeapSort() {
 
 	heap.SortHeap(l)
 	fmt.Printf("Data after heap sort: %v\n", l)
+}
 
+func displaySymbolTableLL() {
+	var st symbol_table.SymbolTable = symbol_table.NewSymbolTableLL()
+	fmt.Printf("st=%v\n", st)
+
+	st.Put("Key1", "Value1")
+	fmt.Printf("After st.Put(\"Key1\", \"Value1\"): %v\n", st)
+
+	st.Put("Key2", "Value2")
+	fmt.Printf("After st.Put(\"Key2\", \"Value2\"): %v\n", st)
+
+	fmt.Printf("st.Contains(\"Key2\"): %v\n", st.Contains("Key2"))
+	fmt.Printf("st.Contains(\"Key3\"): %v\n", st.Contains("Key3"))
+
+	fmt.Printf("st.Keys(): %v\nst.Size(): %v\n", st.Keys(), st.Size())
+
+	st.Delete("NonExists")
+	fmt.Printf("After st.Delete(\"NonExists\"): %v, st: %v\n", st.Keys(), st)
+
+	v := st.Get("NonExists")
+	fmt.Printf("After st.Get(\"NonExists\"): %v, st: %v\n", v, st)
+
+	v = st.Get("Key1")
+	fmt.Printf("After st.Get(\"Key1\"): %v, st: %v\n", v, st)
+
+	st.Delete("Key1")
+	fmt.Printf("After st.Delete(\"Key1\"): %v, st: %v\n", st.Keys(), st)
+
+	st.Put("Key3", "Value3")
+	fmt.Printf("After st.Put(\"Key3\", \"Value3\"): %v\n", st)
+
+	st.Delete("Key2")
+	fmt.Printf("After st.Delete(\"Key2\"): %v, st: %v\n", st.Keys(), st)
+
+	fmt.Printf("st.Size(): %v, st: %v\n", st.Size(), st)
+
+	st.Delete("Key3")
+	fmt.Printf("After st.Delete(\"Key3\"): %v, st: %v\n", st.Keys(), st)
+
+	fmt.Printf("st.IsEmpty(): %v, st: %v\n", st.IsEmpty(), st)
+}
+
+func displaySymbolTableBST() {
+	var st symbol_table.SymbolTable = symbol_table.NewSymbolTableBST()
+	fmt.Printf("st=%v\n", st)
+
+	st.Put("Key1", "Value1")
+	fmt.Printf("After st.Put(\"Key1\", \"Value1\"): %v\n", st)
+
+	st.Put("Key2", "Value2")
+	fmt.Printf("After st.Put(\"Key2\", \"Value2\"): %v\n", st)
+
+	fmt.Printf("st.Contains(\"Key2\"): %v\n", st.Contains("Key2"))
+	fmt.Printf("st.Contains(\"Key3\"): %v\n", st.Contains("Key3"))
+
+	fmt.Printf("st.Keys(): %v\nst.Size(): %v\n", st.Keys(), st.Size())
+
+	st.Delete("NonExists")
+	fmt.Printf("After st.Delete(\"NonExists\"): %v, st: %v\n", st.Keys(), st)
+
+	v := st.Get("NonExists")
+	fmt.Printf("After st.Get(\"NonExists\"): %v, st: %v\n", v, st)
+
+	v = st.Get("Key1")
+	fmt.Printf("After st.Get(\"Key1\"): %v, st: %v\n", v, st)
+
+	st.Delete("Key1")
+	fmt.Printf("After st.Delete(\"Key1\"): %v, st: %v\n", st.Keys(), st)
+
+	st.Put("Key3", "Value3")
+	fmt.Printf("After st.Put(\"Key3\", \"Value3\"): %v\n", st)
+
+	st.Delete("Key2")
+	fmt.Printf("After st.Delete(\"Key2\"): %v, st: %v\n", st.Keys(), st)
+
+	fmt.Printf("st.Size(): %v, st: %v\n", st.Size(), st)
+
+	st.Delete("Key3")
+	fmt.Printf("After st.Delete(\"Key3\"): %v, st: %v\n", st.Keys(), st)
+
+	fmt.Printf("st.IsEmpty(): %v, st: %v\n", st.IsEmpty(), st)
 }
 
 func main() {
@@ -93,5 +175,15 @@ func main() {
 	fmt.Printf("Display HeapSort\n\n")
 
 	displayHeapSort()
+	fmt.Println()
+
+	fmt.Printf("Display Symbol Table(Linked List)\n\n")
+
+	displaySymbolTableLL()
+	fmt.Println()
+
+	fmt.Printf("Display Symbol Table(Binary Search Tree)\n\n")
+
+	displaySymbolTableBST()
 	fmt.Println()
 }
